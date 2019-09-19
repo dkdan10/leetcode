@@ -18,6 +18,23 @@ var change = function(amount, coins) {
     return memo[amount]
 };
 
+// RECURSIVE MEMO(ED)
+var change = function (amount, coins, memo = {}) {
+    const key = amount + '-' + coins;
+    if (key in memo) return memo[key];
+    if (amount === 0) return 1;
+  ​
+    let totalWays = 0;
+    const currentCoin = coins[coins.length - 1];
+    for (let qty = 0, value = qty * currentCoin; value <= amount; qty += 1, value += currentCoin) {
+      totalWays += change(amount - value, coins.slice(0, -1), memo);
+    }
+  ​
+    memo[key] = totalWays;
+    return memo[key];
+  };
+  
+
 //  NOT MEMOIZED
 var noMemoChange = function(amount, coins) {
     if (amount === 0) return 1
