@@ -20,10 +20,10 @@ var lastStoneWeight = function(stones) {
 };
 
 const maximumTwo = (arr) => {
-    arr = new Array(...arr)
-    const y = Math.max.apply(null, arr)
+    arr = arr.slice()
+    const y = Math.max(...arr)
     arr.splice(arr.indexOf(y), 1)
-    const x = Math.max.apply(null, arr)
+    const x = Math.max(...arr)
     return [x, y]
 }
 
