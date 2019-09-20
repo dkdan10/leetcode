@@ -32,3 +32,5 @@ const sharePurchases = (investString) => {
     }
     return numWays
 }
+
+console.log(sharePurchases("ABCCBA"))
