@@ -15,10 +15,12 @@ var isValidBST = function (root) {
     const stack = [{ node: root, max: Infinity, min: -Infinity }]
     while (stack.length) {
         const { node, max, min } = stack.shift()
-        if (node.left) stack.push({ node: node.left, max: node.val, min: min })
-        if (node.right) stack.push({ node: node.right, max: max, min: node.val })
-        if (node.val <= min) return false
-        if (node.val >= max) return false
+        if (node) {
+            if (node.val <= min) return false
+            if (node.val >= max) return false
+            stack.push({ node: node.left, max: node.val, min: min })
+            stack.push({ node: node.right, max: max, min: node.val })
+        }
     }
     return true
 };
