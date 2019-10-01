@@ -20,3 +20,7 @@ var allPathsSourceTarget = function(graph) {
     }
     return solve(0)
 };
+[["A", "B", "C", "E"], 
+["S", "F", "E", "S"],
+ ["A", "D", "E", "E"]]
+"ABCESEEEFS"
