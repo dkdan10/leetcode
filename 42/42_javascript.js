@@ -20,6 +20,37 @@ var trap = function (height) {
     return totalWater
 };
 
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var trap = function (height) {
+    let i = 0
+    let j = height.length - 1
+    let maxLeft = 0
+    let maxRight = 0
+    let totalWater = 0
+    while (i < j) {
+        heightI = height[i]
+        heightJ = height[j]
+        if (heightJ > maxRight) maxRight = heightJ
+        if (heightI > maxLeft) maxLeft = heightI
+
+        if (heightI <= heightJ) {
+            if (maxLeft > heightI) {
+                totalWater += Math.min(maxLeft, maxRight) - heightI
+            }
+            i++
+        } else {
+            if (maxRight > heightJ) {
+                totalWater += Math.min(maxLeft, maxRight) - heightJ
+            }
+            j--
+        }
+    }
+    return totalWater
+};
+
 
 var trap = function (height) {
     let maxLookup = {}
